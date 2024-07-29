@@ -1,8 +1,12 @@
-import React from 'react';
+import Footer from "./components/Footer";
+import Tap from "./components/Tap";
 
 function App() {
   return (
-    <div>Hello World!</div>
+    <>
+      {/* <Tap /> */}
+      <Footer />
+    </>
   );
 }
 
