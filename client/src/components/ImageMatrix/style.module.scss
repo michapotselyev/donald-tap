@@ -1,0 +1,16 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(100, 10px);
+  grid-template-rows: repeat(100, 10px);
+  width: 1000px;
+  height: 1000px;
+  position: relative;
+}
+
+.gridCell {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
