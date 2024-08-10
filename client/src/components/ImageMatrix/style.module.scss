@@ -1,16 +1,22 @@
 .gridContainer {
   display: grid;
-  grid-template-columns: repeat(100, 10px);
-  grid-template-rows: repeat(100, 10px);
-  width: 1000px;
-  height: 1000px;
-  position: relative;
+  grid-template-columns: repeat(20, 1fr); /* 10x10 сетка */
+  grid-template-rows: repeat(20, 1fr);
+  width: 90vw; /* Сетка занимает 90% ширины экрана */
+  height: 90vw; /* Сохраняем пропорции 1:1 */
+  max-width: 500px;
+  max-height: 500px;
+  margin: auto;
+  background-size: cover;
+  background-position: center;
 }
 
 .gridCell {
-  width: 10px;
-  height: 10px;
-  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff; /* Цвет, закрывающий изображение */
+  transition: background-color 0.3s ease; /* Плавный переход цвета при открытии ячейки */
+  transition-property: background-color, border;
   border: 1px solid #ddd;
   box-sizing: border-box;
 }

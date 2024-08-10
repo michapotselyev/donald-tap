@@ -4,7 +4,7 @@ import Tap from "./components/Tap";
 function App() {
   return (
     <>
-      {/* <Tap /> */}
+      <Tap />
       <Footer />
     </>
   );
