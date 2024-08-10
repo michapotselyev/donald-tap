@@ -17,23 +17,28 @@
   overflow: hidden;
   padding: 0;
 
-  /* Добавляем базовый стиль для кнопки */
   display: inline-block;
   border-radius: 8px;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   &:active {
-    /* Добавляем стили для активного состояния */
     transform: scale(0.95);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 }
 
-/* Опционально добавьте стили для фокуса и состояния наведения */
 .tap:focus {
   outline: none;
 }
 
 .tap:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.copy {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100px;
+  height: 100px;
 }

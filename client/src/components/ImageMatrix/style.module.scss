@@ -14,9 +14,8 @@
 .gridCell {
   width: 100%;
   height: 100%;
-  background-color: #ffffff; /* Цвет, закрывающий изображение */
-  transition: background-color 0.3s ease; /* Плавный переход цвета при открытии ячейки */
-  transition-property: background-color, border;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
