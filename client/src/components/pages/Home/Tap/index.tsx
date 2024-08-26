@@ -1,8 +1,8 @@
-import ImageMatrix from "../ImageMatrix";
+import ImageMatrix from "@/components/shared/ImageMatrix";
 import styles from "./style.module.scss";
-import testIcon from "../../assets/nft/test-nft.webp";
+import testIcon from "@/assets/nft/test-nft.webp";
 import { useEffect, useMemo, useState } from "react";
-import calculateUniqueCells from "../../utils/calculateUniqueCells";
+import calculateUniqueCells from "@/utils/calculateUniqueCells";
 import { motion } from "framer-motion";
 
 const Tap = () => {

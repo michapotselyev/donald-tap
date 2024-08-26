@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,20 +11,30 @@
     "@types/node": "^16.18.104",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@xyflow/react": "^12.1.0",
     "classnames": "^2.5.1",
-    "framer-motion": "^11.3.24",
+    "fabric": "^5.4.0",
+    "framer-motion": "^11.3.28",
+    "hammerjs": "^2.0.8",
+    "konva": "^9.3.14",
+    "pixi.js": "^8.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-flow-renderer": "^10.3.17",
+    "react-konva": "^18.2.10",
+    "react-remark": "^2.1.0",
+    "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
     "react-window": "^1.8.10",
+    "react-zoom-pan-pinch": "^3.6.1",
     "sass": "^1.77.8",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +56,8 @@
     ]
   },
   "devDependencies": {
+    "@types/fabric": "^5.3.8",
+    "@types/hammerjs": "^2.0.45",
     "@types/react-window": "^1.8.8"
   }
 }

@@ -1,53 +1,40 @@
-import { useState } from "react";
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import NavigationButton from "../shared/NavigationButton";
+import { pages } from "../../utils/constants/routes";
 import styles from "./style.module.scss";
-import classNames from "classnames";
-import Icon from "../Icon";
 
-type routerTypes = "home" | "account" | "friends" | "tasks";
+const Footer = React.memo(() => {
+  const currentRouter = useLocation();
+  const navigation = useNavigate();
 
-const Footer = () => {
-  const [currentRouter, setCurrentRouter] = useState("home");
-
-  const changeNavigation = (router: routerTypes) => {
+  const changeNavigation = (router: string) => {
     if (checkRouter(router)) return;
-    setCurrentRouter(router);
+    navigation(router);
   };
 
-  const checkRouter = (router: routerTypes) => {
-    return router === currentRouter;
-  };
+  const checkRouter = (router: string) => router === currentRouter.pathname;
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <ul className={styles.navigation}>
           <li className={styles.navigationItem}>
-            <button onClick={() => changeNavigation("home")} className={classNames(styles.navigationButton, checkRouter("home") ? styles.navigationButton_active : "")}>
-              <Icon width={20} height={20} name="home" />
-              Home
-            </button>
+            <NavigationButton onClick={() => changeNavigation(pages.home.url)} isActive={checkRouter(pages.home.url)} iconName="home" label="Home" />
           </li>
           <li className={styles.navigationItem}>
-            <button onClick={() => changeNavigation("account")} className={classNames(styles.navigationButton, checkRouter("account") ? styles.navigationButton_active : "")}>
-              <Icon width={20} height={20} name="account" />
-              Account
-            </button>
+            <NavigationButton onClick={() => changeNavigation(pages.account.url)} isActive={checkRouter(pages.account.url)} iconName="account" label="Account" />
           </li>
           <li className={styles.navigationItem}>
-            <button onClick={() => changeNavigation("friends")} className={classNames(styles.navigationButton, checkRouter("friends") ? styles.navigationButton_active : "")}>
-              <Icon width={20} height={20} name="friends" />
-              Friends
-            </button>
+            <NavigationButton onClick={() => changeNavigation(pages.friends.url)} isActive={checkRouter(pages.friends.url)} iconName="friends" label="Friends" />
           </li>
           <li className={styles.navigationItem}>
-            <button onClick={() => changeNavigation("tasks")} className={classNames(styles.navigationButton, checkRouter("tasks") ? styles.navigationButton_active : "")}>
-              <Icon width={20} height={20} name="tasks" />
-              Tasks
-            </button>
+            <NavigationButton onClick={() => changeNavigation(pages.tasks.url)} isActive={checkRouter(pages.tasks.url)} iconName="tasks" label="Tasks" />
           </li>
         </ul>
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

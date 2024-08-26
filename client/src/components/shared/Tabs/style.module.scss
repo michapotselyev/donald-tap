@@ -1,0 +1,18 @@
+.tabs {
+  display: flex;
+  margin-top: 10px;
+}
+
+.tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+  color: white;
+
+  &_active {
+    font-size: 19px;
+  }
+}
