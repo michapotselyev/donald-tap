@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
 }
 
@@ -31,9 +32,6 @@
   outline: none;
 }
 
-.tap:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
 
 .copy {
   position: absolute;

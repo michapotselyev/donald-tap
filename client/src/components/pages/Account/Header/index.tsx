@@ -1,14 +1,26 @@
 import styles from "./style.module.scss";
+import userIcon from '@/assets/icons/user-icon.png'
 
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <div className={styles.top}>
-          <div className={styles.topLvl}>13 LVL</div>
-          <div className={styles.topCurrentLvl}>100LVL</div>
+        <div className={styles.block}>
+          <div className={styles.user}>
+            <img src={userIcon} className={styles.userIcon} alt="user-icon"/>
+
+            <p className={styles.userTitle}>Mykhailo Potseluiev</p>
+          </div>
+          <div className={styles.progress}>
+            <div className={styles.progressHeader}>
+              <p className={styles.progressHeaderLvl}>Lv. 4</p>
+              <p className={styles.progressHeaderPoint}>15/100</p>
+            </div>
+            <div className={styles.progressLine}>
+              <div className={styles.progressLineBackground}></div>
+            </div>
+          </div>
         </div>
-        <div className={styles.down}>100.000 points in 1.000.000</div>
       </div>
     </header>
   );

@@ -1,0 +1,37 @@
+.block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+.limit {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  &Text {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "Crimson Text";
+    color: #fff;
+  }
+}
+
+
+.button {
+    background: linear-gradient(127deg, #ffdd00, #f0b70045);
+    color: #fff;
+    border: 2px solid rgba(255, 221, 0, 0.8);
+    border-radius: 25px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }

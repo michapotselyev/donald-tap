@@ -1,48 +1,54 @@
 import { KeyboardEventHandler, useCallback, useState } from "react";
-import { ReactFlow, ReactFlowProvider, useReactFlow, NodeMouseHandler, Background, BackgroundVariant } from "@xyflow/react";
+import {
+  ReactFlow,
+  ReactFlowProvider,
+  useReactFlow,
+  NodeMouseHandler,
+  Background,
+  BackgroundVariant,
+} from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
 import "./index.css";
 
-import { Slide, SlideData } from "./Slide";
-import { slides, slidesToElements } from "./slides";
+import { SkillCard, SkillData } from "./SkillCard";
+import { skills, skillsToElements } from "./slides";
+import useWindowSize from "@/hooks/useWindowSize";
 
 const nodeTypes = {
-  slide: Slide,
+  skill: SkillCard,
 };
 
-const initialSlide = "01";
-const { nodes, edges } = slidesToElements(initialSlide, slides);
+const initialSlide = "1";
+const { nodes, edges } = skillsToElements(initialSlide, skills);
 
-function App() {
+const Skills =()=> {
   const [currentSlide, setCurrentSlide] = useState(initialSlide);
   const { fitView } = useReactFlow();
 
-  const handleKeyPress = useCallback<KeyboardEventHandler>(
-    (event) => {
-      const slide = slides[currentSlide];
+  // const handleKeyPress = useCallback<KeyboardEventHandler>(
+  //   (event) => {
+  //     const slide = slides[currentSlide];
 
-      switch (event.key) {
-        case "ArrowLeft":
-        case "ArrowUp":
-        case "ArrowDown":
-        case "ArrowRight": {
-          const direction = event.key.slice(5).toLowerCase() as keyof SlideData;
-          const target = slide[direction];
+  //     switch (event.key) {
+  //       case "ArrowLeft":
+  //       case "ArrowUp":
+  //       case "ArrowDown":
+  //       case "ArrowRight": {
+  //         const direction = event.key.slice(5).toLowerCase() as keyof SkillData;
+  //         const target = slide[direction];
 
-          // Prevent the arrow keys from scrolling the page when React Flow is
-          // only part of a larger application.
-          event.preventDefault();
+  //         event.preventDefault();
 
-          if (target) {
-            setCurrentSlide(target);
-            fitView({ nodes: [{ id: target }], duration: 100 });
-          }
-        }
-      }
-    },
-    [fitView, currentSlide]
-  );
+  //         if (target) {
+  //           setCurrentSlide(target);
+  //           fitView({ nodes: [{ id: target }], duration: 100 });
+  //         }
+  //       }
+  //     }
+  //   },
+  //   [fitView, currentSlide]
+  // );
 
   const handleNodeClick = useCallback<NodeMouseHandler>(
     (_, node) => {
@@ -54,6 +60,8 @@ function App() {
     [fitView, currentSlide]
   );
 
+  const { height } = useWindowSize();
+
   return (
     <ReactFlow
       nodes={nodes}
@@ -63,7 +71,7 @@ function App() {
       fitView
       fitViewOptions={{ nodes: [{ id: initialSlide }], duration: 100 }}
       minZoom={0.1}
-      onKeyDown={handleKeyPress}
+      // onKeyDown={handleKeyPress}
       onNodeClick={handleNodeClick}
     >
       <Background color="#f2f2f2" variant={BackgroundVariant.Lines} />
@@ -71,8 +79,9 @@ function App() {
   );
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => (
-  <ReactFlowProvider>
-    <App />
+  <ReactFlowProvider >
+    <Skills />
   </ReactFlowProvider>
 );

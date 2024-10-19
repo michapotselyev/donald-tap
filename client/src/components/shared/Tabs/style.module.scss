@@ -1,18 +1,50 @@
 .tabs {
+  overflow: hidden;
+  position: relative;
+  width: 50%;
+  height: 27px;
   display: flex;
+  margin: 0 auto;
   margin-top: 10px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #fff;
+  border-radius: 12px;
 }
 
 .tab {
+  position: sticky;
+  z-index: 2;
+
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 17px;
+  cursor: pointer;
+
+  font-family: 'Crimson Text';
+  font-size: 20px;
+  font-weight: 500;
   color: white;
+  text-shadow: 0px 3px 8px black;
+
+  &Content {
+    height: 100vh;
+  }
+}
+
+
+.tabBlock {
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 50%;
+  height: 27px;
+  background: #fff;
+  border-radius: 11px;
+  transition: left 250ms linear;
 
   &_active {
-    font-size: 19px;
+    left: 50%;
   }
 }

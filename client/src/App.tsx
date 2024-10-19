@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { pages } from "./utils/constants/routes";
+import { MainProvider } from "./components/layout/Main/MainContext";
 
 function App() {
   return (
     <>
+    <MainProvider>
       <Router>
         <Routes>
           {Object.values(pages).map((page) => (
@@ -11,6 +13,7 @@ function App() {
           ))}
         </Routes>
       </Router>
+      </MainProvider>
     </>
   );
 }

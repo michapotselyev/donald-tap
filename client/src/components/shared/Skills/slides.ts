@@ -1,78 +1,70 @@
 import { Edge, Node } from "@xyflow/react";
-import { SLIDE_WIDTH, SLIDE_HEIGHT, SLIDE_PADDING, SlideData } from "./Slide";
+import { CARD_HEIGHT, CARD_WIDTH, CARD_PADDING, SkillData } from "./SkillCard";
 
-const slide01 = {
-  id: "01",
+// Данные скиллов (карточек)
+const skill01 = {
+  id: "1",
+  type: "skill",
   data: {
-    right: "02",
-    source: `
-# Slide 1
-
-- This is the first slide
-- It has a right arrow to go to the next slide
-`,
+    title: "JavaScript",
+    description: "Improve your JS skills",
+    currentLevel: 3,
+    upgradeCost: 200,
+    right: "2",
   },
+  position: { x: 0, y: 0 },
 };
 
-const slide02 = {
-  id: "02",
+const skill02 = {
+  id: "2",
+  type: "skill",
   data: {
-    left: "01",
-    up: "03",
-    right: "04",
-    source: `
-# Slide 2
-
-- This is the second slide
-- It has a left arrow to go back to the first slide
-- It has an up arrow to go to the third slide
-- It has a right arrow to go to the fourth slide
-`,
+    title: "React",
+    description: "Learn advanced React",
+    currentLevel: 2,
+    upgradeCost: 150,
+    left: "1",
+    down: "3",
   },
+  position: { x: 120, y: 0 },
 };
 
-const slide03 = {
-  id: "03",
+const skill03 = {
+  id: "3",
+  type: "skill",
   data: {
-    down: "02",
-    source: `
-# Slide 3
-
-- This is the third slide
-- It has a down arrow to go back to the second slide
-`,
+    title: "CSS",
+    description: "Master CSS techniques",
+    currentLevel: 4,
+    upgradeCost: 100,
+    up: "2",
   },
+  position: { x: 120, y: 120 },
 };
 
-const slide04 = {
-  id: "04",
-  data: {
-    left: "02",
-    source: `
-# Slide 4
+// Собираем данные скиллов в объект
+export const skills = Object.fromEntries(
+  [skill01, skill02, skill03].map(({ id, data }) => [id, data])
+) as Record<string, SkillData>;
 
-- This is the fourth slide
-- It has a left arrow to go back to the second slide
-`,
-  },
-};
-
-export const slides = Object.fromEntries([slide01, slide02, slide03, slide04].map(({ id, data }) => [id, data])) as Record<string, SlideData>;
-
-export const slidesToElements = (initial: string, slides: Record<string, SlideData>) => {
+// Функция для преобразования скиллов в элементы React Flow
+export const skillsToElements = (
+  initial: string,
+  skills: Record<string, SkillData>
+) => {
   const stack = [{ id: initial, position: { x: 0, y: 0 } }];
   const visited = new Set();
-  const nodes: Node<SlideData>[] = [];
+  const nodes: Node<SkillData>[] = [];
   const edges: Edge[] = [];
 
   while (stack.length) {
     const { id, position } = stack.pop()!;
-    const data = slides[id];
-    const node = { id, type: "slide", position, data };
+    const data = skills[id];
+    const node = { id, type: "skill", position, data };
 
     if (data.left && !visited.has(data.left)) {
       const nextPosition = {
-        x: position.x - (SLIDE_WIDTH + SLIDE_PADDING),
+        x: position.x - (CARD_WIDTH + CARD_PADDING),
         y: position.y,
       };
 
@@ -87,7 +79,7 @@ export const slidesToElements = (initial: string, slides: Record<string, SlideDa
     if (data.up && !visited.has(data.up)) {
       const nextPosition = {
         x: position.x,
-        y: position.y - (SLIDE_HEIGHT + SLIDE_PADDING),
+        y: position.y - (CARD_HEIGHT + CARD_PADDING),
       };
 
       stack.push({ id: data.up, position: nextPosition });
@@ -97,7 +89,7 @@ export const slidesToElements = (initial: string, slides: Record<string, SlideDa
     if (data.down && !visited.has(data.down)) {
       const nextPosition = {
         x: position.x,
-        y: position.y + (SLIDE_HEIGHT + SLIDE_PADDING),
+        y: position.y + (CARD_HEIGHT + CARD_PADDING),
       };
 
       stack.push({ id: data.down, position: nextPosition });
@@ -110,13 +102,13 @@ export const slidesToElements = (initial: string, slides: Record<string, SlideDa
 
     if (data.right && !visited.has(data.right)) {
       const nextPosition = {
-        x: position.x + (SLIDE_WIDTH + SLIDE_PADDING),
+        x: position.x + (CARD_WIDTH + CARD_PADDING),
         y: position.y,
       };
 
       stack.push({ id: data.right, position: nextPosition });
       edges.push({
-        id: `${id}->${data.down}`,
+        id: `${id}->${data.right}`,
         source: id,
         target: data.right,
       });
