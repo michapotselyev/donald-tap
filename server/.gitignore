@@ -35,6 +35,7 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
+.vscode/
 
 ### Linux ###
 *~
@@ -109,3 +110,5 @@ dist/
 config/local*
 tmp/
 .eslintcache
+
+.vscode/

@@ -1,5 +1,5 @@
 import { ValidationResult } from '@hapi/joi';
-import { configSchema } from 'src/validation-schemas/config-schema';
+import { configSchema } from 'src/validation-schemas/config.schema';
 
 const { CORS_ORIGIN, LOG_LEVEL, PORT, LOG_TRANSPORTS, NODE_ENV } = process.env;
 
@@ -12,7 +12,10 @@ const { value, error } = configSchema.validate({
     origin: CORS_ORIGIN ?? true
   },
   logLevel: LOG_LEVEL ?? 'error',
-  logTransports: (LOG_TRANSPORTS ?? 'console').split(',').map((transport) => transport.trim())
+  logTransports: (LOG_TRANSPORTS ?? 'console').split(',').map((transport) => transport.trim()),
+  useHttps: NODE_ENV === 'production',
+  sslCertPath: 'path',
+  sslKeyPath: 'path',
 }) as Omit<ValidationResult, 'value'> & { value: Config };
 
 if (error) throw new Error(error.message);
@@ -29,4 +32,7 @@ export interface Config {
   };
   logLevel: string;
   logTransports: string[];
+  useHttps: false;
+  sslCertPath: string;
+  sslKeyPath: string;
 }

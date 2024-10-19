@@ -3,7 +3,8 @@ import { createLogger, format, transports as winstonTransports } from 'winston';
 import { config } from 'src/config';
 
 export enum Transport {
-  Console = 'console'
+  Console = 'console',
+  File = 'file'
 }
 
 const getTransports = (transports: Transport[]) => {
@@ -11,6 +12,8 @@ const getTransports = (transports: Transport[]) => {
     switch (transport) {
       case Transport.Console:
         return new winstonTransports.Console();
+      case Transport.File:
+        return new winstonTransports.File({ filename: 'logger.log' });
     }
   });
 };
