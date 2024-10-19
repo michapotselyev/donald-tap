@@ -1,0 +1,21 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr); /* 10x10 сетка */
+  grid-template-rows: repeat(20, 1fr);
+  width: 90vw; /* Сетка занимает 90% ширины экрана */
+  height: 90vw; /* Сохраняем пропорции 1:1 */
+  max-width: 500px;
+  max-height: 500px;
+  margin: auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.gridCell {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}

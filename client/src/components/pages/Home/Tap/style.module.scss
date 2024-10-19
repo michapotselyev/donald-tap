@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.tap {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  touch-action: manipulation;
+  user-select: none;
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+
+  display: inline-block;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.tap:focus {
+  outline: none;
+}
+
+
+.copy {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100px;
+  height: 100px;
+}

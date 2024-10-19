@@ -1,0 +1,84 @@
+.progressContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    margin-top: 0;
+    text-align: center;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .block {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .progressHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .minValue, .maxValue {
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .progressTitle {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  .progressBar {
+    position: relative;
+    height: 15px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .progressFill {
+    height: 100%;
+    background-color: #ffdd00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 15px;
+    transition: width 1s ease-in-out;
+  }
+  
+  .currentValue {
+    position: absolute;
+    color: #454545;
+  }
+  
+  @media (max-width: 768px) {
+    .progressContainer {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  
+    .progressTitle {
+      font-size: 18px;
+    }
+  
+    .minValue, .maxValue {
+      font-size: 14px;
+    }
+  
+    .progressBar {
+      height: 15px;
+    }
+  
+    .progressFill {
+      font-size: 12px;
+    }
+  }
+  
