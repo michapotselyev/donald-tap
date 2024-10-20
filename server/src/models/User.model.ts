@@ -12,6 +12,12 @@ interface UserAttributes {
   lastName?: string;
   username?: string;
   avatarUrl?: string;
+  exp: number;
+  level: number;
+  levelPoints: number;
+  token?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 /**
@@ -27,13 +33,20 @@ interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
  * @extends {Model<UserAttributes>}
  * @implements {UserAttributes}
  */
-export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
+export class User extends Model<
+  UserAttributes,
+  UserCreationAttributes
+> implements UserAttributes {
   public id!: number;
   public telegramId!: string;
   public firstName!: string;
   public lastName?: string;
   public username?: string;
   public avatarUrl?: string;
+  public exp!: number;
+  public level!: number;
+  public levelPoints!: number;
+  public token?: string;
 
   // timestamps
   public readonly createdAt!: Date;
@@ -61,7 +74,6 @@ User.init(
     telegramId: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     /**
      * First name of the user.
@@ -92,9 +104,41 @@ User.init(
     avatarUrl: {
       type: DataTypes.STRING,
     },
+    /**
+     * Experience points (EXP) of the user.
+     * @type {number}
+     */
+    exp: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    /**
+     * Current level of the user.
+     * @type {number}
+     */
+    level: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    /**
+     * Current points in the user's level progression.
+     * @type {number}
+     */
+    levelPoints: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    token: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
     tableName: 'users',
+    timestamps: true,
   }
 );

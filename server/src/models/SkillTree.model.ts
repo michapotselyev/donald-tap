@@ -1,10 +1,26 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from 'src/database';
-import { SkillBranch } from './SkillBranch.model';
 
-export class SkillTree extends Model {
+interface SkillTreeAttributes {
+  id: number;
+  name: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+interface SkillTreeCreationAttributes extends Optional<SkillTreeAttributes, 'id'> {}
+
+export class SkillTree extends Model
+<
+  SkillTreeAttributes,
+  SkillTreeCreationAttributes
+> implements SkillTreeAttributes {
   public id!: number;
   public name!: string;
+
+  // timestamps
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
 }
 
 SkillTree.init({
@@ -20,4 +36,5 @@ SkillTree.init({
 }, {
   sequelize,
   tableName: 'skill_trees',
+  timestamps: true,
 });

@@ -1,17 +1,17 @@
-import jwt from "jsonwebtoken";
 import { Request, Response } from 'express';
 import "dotenv/config";
-
-import { User } from "src/models";
+import { AuthService } from "src/services/auth.service";
 
 /**
  * Controller class for user authentication operations.
  * @class
  */
 export class AuthController {
-  // constructor() {
-  //   this.service = new UserService();
-  // }
+  private service: AuthService;
+
+  constructor() {
+    this.service = new AuthService();
+  }
 
   /**
    * Auth to server.
@@ -20,27 +20,23 @@ export class AuthController {
    * @returns {Promise<{code: number, values: any}>} The result of the operation.
    */
   public async auth(req: Request, res: Response): Promise<{code: number, values: any}> {
-    const { telegramId, firstName, lastName, username, avatarUrl } = req.body;
+    const {
+      telegramId,
+      firstName,
+      lastName,
+      username,
+      avatarUrl
+    } = req.body;
 
-    let user = await User.findOne({ where: { telegramId } });
+    const result = await this.service.auth(
+      telegramId,
+      firstName,
+      lastName,
+      username,
+      avatarUrl
+    );
 
-    if (!user) {
-      user = await User.create({
-        telegramId,
-        firstName,
-        lastName,
-        username,
-        avatarUrl,
-      });
-    } else {
-      await user.update({ firstName, lastName, username, avatarUrl });
-    }
-
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
-      expiresIn: '1h',
-    });
-
-    return { code: 200, values: { token } }
+    return { code: result.code, values: result.values };
   }
 }
 
