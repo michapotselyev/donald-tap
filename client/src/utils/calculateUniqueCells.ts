@@ -5,10 +5,9 @@ function calculateUniqueCells(pressed: number, totalPressesRequired: number, tot
 
   const pressesPerCell = totalPressesRequired / totalCells;
 
-  // Количество уникальных ячеек
-  const uniqueCells = Math.min(totalCells, pressed / pressesPerCell);
+  const uniqueCells = Math.min(totalCells, Math.floor(pressed / pressesPerCell));
 
-  return Math.round(uniqueCells);
+  return uniqueCells;
 }
 
 export default calculateUniqueCells;

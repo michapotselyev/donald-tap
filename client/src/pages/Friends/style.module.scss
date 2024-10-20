@@ -1,0 +1,84 @@
+.container {
+  padding: 0 20px;
+}
+
+.title {
+  font-family: "Crimson Text";
+  font-size: 32px;
+  font-weight: 500;
+  color: #ffd700;
+  text-align: center;
+  text-shadow: 0px 3px 8px black;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  max-width: 280px;
+}
+
+.second {
+  font-family: "Crimson Text";
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}
+
+.block {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(133deg, rgba(255, 255, 255, 0.6) 16%, rgb(200 200 200 / 86%) 65%);
+  padding: 13px 20px;
+  border-radius: 30px;
+}
+
+.total {
+  font-family: "Crimson Text";
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0px 3px 8px black;
+}
+
+.totalValue {
+  font-family: "Crimson Text";
+  font-size: 32px;
+  font-weight: 500;
+  color: #ffd700;
+  text-align: center;
+  text-shadow: 0px 3px 8px black;
+}
+
+.button {
+   margin: 0 auto;
+   margin-top: 6px;
+  background: linear-gradient(265deg, #ffffff, rgb(255 255 255 / 19%));
+  border: 1px solid #fff;
+  border-radius: 25px;
+  padding: 7px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  font-family: "Crimson Text";
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0px 3px 8px black;
+}
+
+
+.desc {
+    font-family: "Crimson Text";
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0px 3px 8px black;
+
+    margin: 0 auto;
+    margin-top: 6px;
+    max-width: 200px;
+}
