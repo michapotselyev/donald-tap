@@ -3,7 +3,7 @@ import "dotenv/config";
 import { AuthService } from "src/services/auth.service";
 
 /**
- * Controller class for user authentication operations.
+ * Controller class for authentication operations.
  * @class
  */
 export class AuthController {
@@ -28,7 +28,7 @@ export class AuthController {
       avatarUrl
     } = req.body;
 
-    const result = await this.service.auth(
+    const { code, values } = await this.service.auth(
       telegramId,
       firstName,
       lastName,
@@ -36,7 +36,7 @@ export class AuthController {
       avatarUrl
     );
 
-    return { code: result.code, values: result.values };
+    return { code, values };
   }
 }
 

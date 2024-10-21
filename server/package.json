@@ -85,7 +85,9 @@
         "nocache": "^4.0.0",
         "pm2": "^5.4.2",
         "sequelize": "^6.37.4",
+        "socket.io": "^4.8.0",
         "winston": "^3.13.1",
+        "xss": "^1.0.15",
         "xss-clean": "^0.1.4"
     },
     "husky": {

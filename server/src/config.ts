@@ -1,13 +1,21 @@
 import { ValidationResult } from '@hapi/joi';
-import { configSchema } from 'src/validation-schemas/config.schema';
+import { configSchema } from 'src/schemas/config.schema';
 
-const { CORS_ORIGIN, LOG_LEVEL, PORT, LOG_TRANSPORTS, NODE_ENV } = process.env;
+const {
+  CORS_ORIGIN,
+  LOG_LEVEL,
+  PORT,
+  LOG_TRANSPORTS,
+  NODE_ENV,
+  SOCKET_PORT
+} = process.env;
 
 const { value, error } = configSchema.validate({
   rootDir: process.cwd(),
   apiPrefix: '/v1',
   nodeEnv: NODE_ENV,
   port: PORT ?? 8080,
+  socketPort: SOCKET_PORT ?? 8081,
   cors: {
     origin: CORS_ORIGIN ?? true
   },
@@ -27,6 +35,7 @@ export interface Config {
   nodeEnv: string;
   apiPrefix: string;
   port: number;
+  socketPort: number;
   cors: {
     origin: string | boolean;
   };

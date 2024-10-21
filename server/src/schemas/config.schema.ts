@@ -6,6 +6,7 @@ export const configSchema = joi
     nodeEnv: joi.string().valid('production', 'development', 'staging').required(),
     apiPrefix: joi.string().required(),
     port: joi.number().required(),
+    socketPort: joi.number().required(),
     cors: {
       origin: joi.string().uri().allow('localhost', true).required()
     },

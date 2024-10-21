@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "test") {
 /**
  * Route for Telegram bot webhook.
  * This route handles incoming messages and callback queries from Telegram.
- * @name POST /webhook
+ * @name POST /v1/bot/webhook
  * @function
  * @memberof botRouter
  * @inner

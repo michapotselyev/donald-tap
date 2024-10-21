@@ -6,6 +6,7 @@ interface TaskAttributes {
   name: string;
   description: string;
   expReward: number;
+  logoPath: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -21,6 +22,7 @@ export class Task extends Model
   public name!: string;
   public description!: string;
   public expReward!: number;
+  public logoPath!: string;
 
   // timestamps
   public readonly createdAt!: Date;
@@ -45,6 +47,10 @@ Task.init(
     expReward: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
+    },
+    logoPath: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
   },
   {

@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from 'src/database';
 
-interface SkillAttributes {
+export interface SkillAttributes {
   id: number;
   skillBranchId: number;
   name: string;

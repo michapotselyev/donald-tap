@@ -10,7 +10,7 @@ import authController from "src/controllers/auth.controller";
 import { authValidateChainMethod } from "src/validations/auth.validation";
 
 /**
- * Router for authentication-related endpoints.
+ * Router for authentication.
  * @type {Router}
  */
 const authRouter: Router = Router();
